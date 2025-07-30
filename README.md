@@ -10,7 +10,7 @@ The goal is to explore how Airbnb prices vary between weekdays and weekends, and
 - Guest satisfaction ratings
 
 ##  Dashboard
-[View Full Looker Studio Dashboard](https://lookerstudio.google.com/reporting/bdc381f2-144e-4d7d-80f6-38579683f575)
+[View Full Dashboard](https://lookerstudio.google.com/reporting/bdc381f2-144e-4d7d-80f6-38579683f575)
 
 ##  Tools Used
 - **SQL (MySQL syntax)** for querying and transforming data
