@@ -9,6 +9,9 @@ The goal is to explore how Airbnb prices vary between weekdays and weekends, and
 - Location (distance from city center)
 - Guest satisfaction ratings
 
+##  Dashboard
+[View Full Looker Studio Dashboard](https://lookerstudio.google.com/reporting/bdc381f2-144e-4d7d-80f6-38579683f575)
+
 ##  Tools Used
 - **SQL (MySQL syntax)** for querying and transforming data
 - **Looker Studio** for building interactive visualizations and maps
@@ -26,9 +29,6 @@ The goal is to explore how Airbnb prices vary between weekdays and weekends, and
 Original dataset from [Kaggle - Airbnb Prices in European Cities](https://www.kaggle.com/datasets/thedevastator/airbnb-prices-in-european-cities), merged into two main CSV files.
 - `all_weekday_listings.csv`
 - `all_weekend_listings.csv`
-
-##  Dashboard
-[View Full Looker Studio Dashboard](YOUR_DASHBOARD_LINK_HERE)
 
 ##  SQL Queries
 All SQL queries used to build the visuals can be found in the `/sql` folder.
