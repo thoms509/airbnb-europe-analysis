@@ -10,7 +10,7 @@ The goal is to explore how Airbnb prices vary between weekdays and weekends, and
 - Guest satisfaction ratings
 
 ##  Tools Used
-- **SQL (PostgreSQL syntax)** for querying and transforming data
+- **SQL (MySQL syntax)** for querying and transforming data
 - **Looker Studio** for building interactive visualizations and maps
 - **Excel** for minor data cleaning and merging files
 
