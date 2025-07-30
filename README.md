@@ -1,6 +1,6 @@
 # Airbnb Pricing & Value Analytics Dashboard
 
-This project uses SQL and Looker Studio to analyze Airbnb listings in 10 major European cities: Amsterdam, Paris, London, Barcelona, Berlin, Vienna, Lisbon, Rome, Budapest, and Athens.
+This project was created to help me better understand Airbnb pricing trends across 10 major European cities—Amsterdam, Paris, London, Barcelona, Berlin, Vienna, Lisbon, Rome, Budapest, and Athens—in preparation for my study abroad in Europe during spring 2026. Using SQL and Looker Studio, I analyzed listings to uncover how prices vary and what factors drive pricing differences.
 
 ##  Project Overview
 The goal is to explore how Airbnb prices vary between weekdays and weekends, and identify key price drivers such as:
