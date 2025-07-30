@@ -1,5 +1,3 @@
-# airbnb-europe-analysis
-
 # Airbnb Pricing Analysis Across European Cities
 
 This project uses SQL and Looker Studio to analyze Airbnb listings in 10 major European cities: Amsterdam, Paris, London, Barcelona, Berlin, Vienna, Lisbon, Rome, Budapest, and Athens.
