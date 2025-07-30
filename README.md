@@ -23,7 +23,7 @@ The goal is to explore how Airbnb prices vary between weekdays and weekends, and
 - Guest satisfaction per dollar by city
 
 ##  Data
-Original dataset from [Kaggle](https://www.kaggle.com/datasets/thedevastator/airbnb-prices-in-european-cities), merged into two main CSV files:
+Original dataset from [Kaggle]([https://www.kaggle.com/datasets/thedevastator/airbnb-prices-in-european-cities](https://www.kaggle.com/datasets/thedevastator/airbnb-prices-in-european-cities/data?select=athens_weekends.csv), merged into two main CSV files:
 - `all_weekday_listings.csv`
 - `all_weekend_listings.csv`
 
