@@ -1,0 +1,124 @@
+# SQL Queries — Airbnb Pricing Dashboard
+
+This page contains all SQL queries used to power the visualizations in the Airbnb Pricing Analysis Dashboard. The queries were written using Looker Studio's SQL interface on top of two pre-processed CSV files:
+
+- `all_weekday_listings.csv`
+- `all_weekend_listings.csv`
+
+These datasets were created by merging city-level Airbnb data from 10 major European cities: Amsterdam, Paris, London, Barcelona, Berlin, Vienna, Lisbon, Rome, Budapest, and Athens.
+
+---
+
+## 1. avg_price_by_city_daytype
+**Visualization:** Stacked Bar Chart  
+**Purpose:** Calculates the average price in each city, split by weekday vs. weekend.
+
+```sql
+SELECT city, 'Weekday' AS day_type, ROUND(AVG(realSum), 2) AS avg_price
+FROM all_weekday_listings
+WHERE realSum > 0
+GROUP BY city
+
+UNION ALL
+
+SELECT city, 'Weekend' AS day_type, ROUND(AVG(realSum), 2) AS avg_price
+FROM all_weekend_listings
+WHERE realSum > 0
+GROUP BY city;
+```
+
+---
+
+## 2. price_by_superhost_daytype
+**Visualization:** Stacked Bar Chart 
+**Purpose:** Compares pricing between Superhosts and regular hosts by day type.
+
+```sql
+SELECT host_is_superhost, 'Weekday' AS day_type, ROUND(AVG(realSum), 2) AS avg_price, COUNT(*) AS listing_count
+FROM all_weekday_listings
+GROUP BY host_is_superhost
+
+UNION ALL
+
+SELECT host_is_superhost, 'Weekend' AS day_type, ROUND(AVG(realSum), 2) AS avg_price, COUNT(*) AS listing_count
+FROM all_weekend_listings
+GROUP BY host_is_superhost;
+```
+
+---
+
+## 3. avg_price_by_roomtype_daytype
+**Visualization:** Grouped Bar Chart  
+**Purpose:** Shows average price by room type across weekdays and weekends.
+
+```sql
+SELECT room_type, 'Weekday' AS Day_Type, ROUND(AVG(realSum), 2) AS Avg_Price, COUNT(*) AS Listing_Count
+FROM all_weekday_listings
+GROUP BY room_type
+
+UNION ALL
+
+SELECT room_type, 'Weekend' AS Day_Type, ROUND(AVG(realSum), 2) AS Avg_Price, COUNT(*) AS Listing_Count
+FROM all_weekend_listings
+GROUP BY room_type;
+```
+
+---
+
+## 4. distance_vs_price_by_daytype
+**Visualization:** Scatter Plot  
+**Purpose:** Explores the correlation between price and distance from the city center.
+
+```sql
+SELECT city, ROUND(dist, 2) AS Distance_km, ROUND(realSum, 2) AS Price, 'Weekday' AS Day_Type
+FROM all_weekday_listings
+WHERE dist IS NOT NULL AND realSum IS NOT NULL
+
+UNION ALL
+
+SELECT city, ROUND(dist, 2) AS Distance_km, ROUND(realSum, 2) AS Price, 'Weekend' AS Day_Type
+FROM all_weekend_listings
+WHERE dist IS NOT NULL AND realSum IS NOT NULL;
+```
+
+---
+
+## 5. listing_map_lat_lng_daytype
+**Visualization:** Heatmap  
+**Purpose:** Displays price distribution geographically using lat/lng coordinates.
+
+```sql
+SELECT lat, lng, realSum AS price, city, room_type, 'Weekday' AS day_type
+FROM all_weekday_listings
+WHERE lat IS NOT NULL AND lng IS NOT NULL AND realSum IS NOT NULL
+
+UNION ALL
+
+SELECT lat, lng, realSum AS price, city, room_type, 'Weekend' AS day_type
+FROM all_weekend_listings
+WHERE lat IS NOT NULL AND lng IS NOT NULL AND realSum IS NOT NULL;
+```
+
+*Note: Latitude and longitude values were formatted as "latitude,longitude" strings in Excel for map compatibility.*
+
+---
+
+## 6. satisfaction_per_dollar_by_city_daytype
+**Visualization:** Bar Chart  
+**Purpose:** Identifies which cities offer the most guest satisfaction per dollar spent.
+
+```sql
+SELECT city, ROUND(AVG(guest_satisfaction_overall / realSum), 4) AS satisfaction_per_dollar, COUNT(*) AS listings, 'Weekday' AS day_type
+FROM all_weekday_listings
+WHERE realSum > 0 AND guest_satisfaction_overall IS NOT NULL
+GROUP BY city
+HAVING COUNT(*) > 50
+
+UNION ALL
+
+SELECT city, ROUND(AVG(guest_satisfaction_overall / realSum), 4) AS satisfaction_per_dollar, COUNT(*) AS listings, 'Weekend' AS day_type
+FROM all_weekend_listings
+WHERE realSum > 0 AND guest_satisfaction_overall IS NOT NULL
+GROUP BY city
+HAVING COUNT(*) > 50;
+```
